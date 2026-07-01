@@ -1,0 +1,66 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Codat
+providerId: codat-io
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Business Data
+- Accounting
+- Banking
+- Commerce
+- Fintech
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Codat applies per-client rate limiting across api.codat.io. When limits are
+  exceeded the API returns HTTP 429 (Too Many Requests). Because Codat proxies
+  and pulls from many underlying accounting, banking, and commerce platforms,
+  the practical throughput of data-refresh operations is also bounded by the
+  rate limits of those source platforms. Specific numeric thresholds are not
+  publicly published and are not reconciled in this artifact.
+notes: >-
+  Confirm current per-endpoint limits, burst allowances, and any account-tier
+  overrides with Codat during reconciliation. Data pulls are asynchronous and
+  event-driven via webhooks, which reduces the need for aggressive polling.
+sources:
+- https://docs.codat.io
+- https://docs.codat.io/platform-api
+- https://docs.codat.io/using-the-api/webhooks/overview
+responseCodes:
+  throttled: 429
+limits:
+- name: API Requests
+  scope: client
+  metric: requests
+  limit: see provider documentation
+  notes: Per-client request rate on api.codat.io; exceeding returns HTTP 429.
+- name: Data Refresh (Pull) Operations
+  scope: company
+  metric: pull_operations
+  limit: bounded by source platform
+  notes: >-
+    Queued data refreshes are asynchronous; effective throughput is constrained
+    by the rate limits of the connected accounting/banking/commerce platform.
+- name: Write Operations
+  scope: connection
+  metric: requests
+  limit: bounded by source platform
+  notes: >-
+    Push operations (Sync for Payables/Expenses, Bank Feeds) are subject to the
+    target platform's own write throttling.
+policies:
+- name: Asynchronous Pulls and Webhooks
+  description: >-
+    Prefer webhook event subscriptions over polling. Codat notifies when a data
+    type finishes syncing, avoiding tight polling loops against rate limits.
+- name: Backoff Strategy
+  description: >-
+    On HTTP 429, clients should implement exponential backoff with jitter and
+    honor any Retry-After header before retrying.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

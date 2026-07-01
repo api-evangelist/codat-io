@@ -1,0 +1,226 @@
+aid: codat-io
+url: https://raw.githubusercontent.com/api-evangelist/codat-io/refs/heads/main/apis.yml
+name: Codat
+kind: company
+description: Codat provides a business data API that connects small-business accounting,
+  banking, and commerce platforms to lenders, fintechs, and B2B software providers.
+  A single integration to api.codat.io standardizes data from QuickBooks, Xero, Sage,
+  NetSuite, FreshBooks, and 30+ other systems - and can write bills, payments, and
+  expenses back into them - powering underwriting, reconciliation, payables, and
+  spend products.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Business Data
+- Accounting
+- Banking
+- Commerce
+- Fintech
+- Lending
+- Financial Data
+created: '2026-07-01'
+modified: '2026-07-01'
+specificationVersion: '0.19'
+apis:
+- aid: codat-io:codat-io-platform-api
+  name: Codat Platform API
+  tags:
+  - Companies
+  - Connections
+  - Webhooks
+  - Integrations
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/platform-api
+    type: Documentation
+  - url: https://docs.codat.io/platform-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  - url: collections/codat-io.postman_collection.json
+    type: PostmanCollection
+  - url: collections/codat-io.opencollection.json
+    type: OpenCollection
+  description: Core control plane for managing companies, data connections, refreshing
+    and tracking pulled datasets, integrations, webhook consumers, API keys, and
+    account settings across every Codat data product.
+- aid: codat-io:codat-io-accounting-api
+  name: Codat Accounting API
+  tags:
+  - Accounting
+  - Invoices
+  - Bills
+  - Journal Entries
+  - Chart of Accounts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/accounting-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/accounting-api
+    type: Documentation
+  - url: https://docs.codat.io/accounting-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  description: Standardized read (and, for supported platforms, write) access to
+    accounting data - accounts, chart of accounts, invoices, bills, bill payments,
+    credit notes, customers, suppliers, payments, journal entries, journals, direct
+    costs/incomes, transfers, and financial statement reports (balance sheet, profit
+    and loss, cash flow).
+- aid: codat-io:codat-io-banking-api
+  name: Codat Banking API
+  tags:
+  - Banking
+  - Bank Accounts
+  - Transactions
+  - Balances
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/banking-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/banking-api
+    type: Documentation
+  - url: https://docs.codat.io/banking-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  description: Standardized banking data pulled from connected bank and accounting
+    platforms - bank accounts, account balances, bank transactions, and transaction
+    categories - for reconciliation and cash-flow analysis.
+- aid: codat-io:codat-io-commerce-api
+  name: Codat Commerce API
+  tags:
+  - Commerce
+  - Orders
+  - Payments
+  - Products
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/commerce-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/commerce-api
+    type: Documentation
+  - url: https://docs.codat.io/commerce-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  description: Standardized commerce and point-of-sale data from platforms such as
+    Shopify, Square, and Stripe - customers, orders, payments, products, disputes,
+    locations, and company info - for merchant underwriting and revenue analysis.
+- aid: codat-io:codat-io-lending-api
+  name: Codat Lending API
+  tags:
+  - Lending
+  - Assess
+  - Underwriting
+  - Financial Metrics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/lending-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/lending-api
+    type: Documentation
+  - url: https://docs.codat.io/lending-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  description: Purpose-built lending product combining standardized financial data
+    with Assess features - enhanced/categorized balance sheet and profit-and-loss
+    reports, financial metrics, accounts receivable/payable, loan summaries, and
+    data-integrity checks - for automated SMB underwriting.
+- aid: codat-io:codat-io-bank-feeds-api
+  name: Codat Bank Feeds API
+  tags:
+  - Bank Feeds
+  - Bank Accounts
+  - Reconciliation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/bank-feeds-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/bank-feeds-api
+    type: Documentation
+  - url: https://docs.codat.io/bank-feeds-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  description: Lets card issuers and neobanks push transaction data as a bank feed
+    into customers' accounting platforms, creating and mapping bank/source accounts
+    so transactions appear ready for reconciliation.
+- aid: codat-io:codat-io-sync-for-payables-api
+  name: Codat Sync for Payables API
+  tags:
+  - Payables
+  - Bills
+  - Suppliers
+  - Bill Payments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/sync-for-payables-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/sync-for-payables-api
+    type: Documentation
+  - url: https://docs.codat.io/sync-for-payables-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  description: Write bills, suppliers, bill payments, and bank accounts back into a
+    customer's accounting platform, with mapping options - the engine behind
+    accounts-payable and bill-pay automation products.
+- aid: codat-io:codat-io-sync-for-expenses-api
+  name: Codat Sync for Expenses API
+  tags:
+  - Expenses
+  - Spend
+  - Reconciliation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/sync-for-expenses-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/sync-for-expenses-api
+    type: Documentation
+  - url: https://docs.codat.io/sync-for-expenses-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  description: Reconcile card and expense transactions into a customer's accounting
+    software - create expense, reimbursable, and transfer transactions, run syncs,
+    track sync/transaction status, upload attachments, and fetch mapping options.
+- aid: codat-io:codat-io-sync-for-commerce-api
+  name: Codat Sync for Commerce API
+  tags:
+  - Commerce
+  - Sync
+  - Reconciliation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.codat.io/sync-for-commerce-api
+  baseURL: https://api.codat.io
+  properties:
+  - url: https://docs.codat.io/sync-for-commerce-api
+    type: Documentation
+  - url: https://docs.codat.io/sync-for-commerce-api
+    type: APIReference
+  - url: openapi/codat-io-openapi.yml
+    type: OpenAPI
+  description: Turnkey product that syncs sales, payments, and fees from commerce and
+    POS platforms into accounting software, with sync configuration, status, and
+    supported-integration discovery.
+common:
+- type: GitHubOrganization
+  url: https://github.com/codatio
+- type: LinkedIn
+  url: https://www.linkedin.com/company/codat
+- type: Website
+  url: https://www.codat.io
+- type: Documentation
+  url: https://docs.codat.io
+- type: Plans
+  url: plans/codat-io-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/codat-io-rate-limits.yml
+- type: FinOps
+  url: finops/codat-io-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,431 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codat API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "basic": {
+        "username": "{{apiKey}}",
+        "password": ""
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies"
+          },
+          "docs": "Returns a list of your companies with pagination, search, and ordering."
+        },
+        {
+          "info": {
+            "name": "Create company",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"Acme Roofing\",\n  \"description\": \"Sandbox company\"\n}"
+            }
+          },
+          "docs": "Creates a new company that represents one of your customers."
+        },
+        {
+          "info": {
+            "name": "Get company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}"
+          },
+          "docs": "Gets a single company by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections"
+          },
+          "docs": "Lists the data connections for a company."
+        },
+        {
+          "info": {
+            "name": "Create connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"platformKey\": \"gbol\"\n}"
+            }
+          },
+          "docs": "Creates a connection for the company using a platform key."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Manage data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Refresh all data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/{{companyId}}/data/all"
+          },
+          "docs": "Queues a refresh of all data types for a company."
+        },
+        {
+          "info": {
+            "name": "Refresh data type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/{{companyId}}/data/queue/invoices"
+          },
+          "docs": "Queues a refresh of a single data type."
+        },
+        {
+          "info": {
+            "name": "Get data status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/dataStatus"
+          },
+          "docs": "Returns the sync status for each data type of a company."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/data/accounts"
+          },
+          "docs": "Gets the latest chart of accounts for a company."
+        },
+        {
+          "info": {
+            "name": "List invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/invoices"
+          },
+          "docs": "Lists invoices for a connection."
+        },
+        {
+          "info": {
+            "name": "List bills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/bills"
+          },
+          "docs": "Lists bills for a connection."
+        },
+        {
+          "info": {
+            "name": "List journal entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/journalEntries"
+          },
+          "docs": "Lists journal entries for a connection."
+        },
+        {
+          "info": {
+            "name": "Get profit and loss",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/financials/profitAndLoss"
+          },
+          "docs": "Gets the profit and loss report for a connection."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Banking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List banking accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/banking-accounts"
+          },
+          "docs": "Lists standardized banking accounts for a connection."
+        },
+        {
+          "info": {
+            "name": "List banking transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/banking-transactions"
+          },
+          "docs": "Lists standardized banking transactions for a connection."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Commerce",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List commerce orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/commerce-orders"
+          },
+          "docs": "Lists commerce orders for a connection."
+        },
+        {
+          "info": {
+            "name": "List commerce payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/commerce-payments"
+          },
+          "docs": "Lists commerce payments for a connection."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get enhanced profit and loss accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/reports/enhancedProfitAndLoss/accounts"
+          },
+          "docs": "Assess-categorized profit and loss accounts for a company."
+        },
+        {
+          "info": {
+            "name": "Get data integrity status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/data/companies/{{companyId}}/assess/dataTypes/banking-transactions/dataIntegrity/status"
+          },
+          "docs": "Returns the match status for a data type used in Assess data integrity."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bank Feeds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bank feed bank accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/bankAccounts"
+          },
+          "docs": "Lists bank accounts available to receive a bank feed."
+        },
+        {
+          "info": {
+            "name": "Create bank feed bank accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/data/bankAccounts",
+            "body": {
+              "type": "json",
+              "data": "[]"
+            }
+          },
+          "docs": "Maps source accounts to target bank accounts in the accounting platform."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/payables/bills",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a bill in the connected accounting platform."
+        },
+        {
+          "info": {
+            "name": "Create bill payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/{{companyId}}/connections/{{connectionId}}/payables/bills/{{billId}}/payment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a payment against a bill."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Expenses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create expense transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/{{companyId}}/sync/expenses/expense-transactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an expense transaction to be reconciled into accounting software."
+        },
+        {
+          "info": {
+            "name": "Get mapping options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/{{companyId}}/sync/expenses/mappingOptions"
+          },
+          "docs": "Gets accounts, tracking categories, and tax rates for expense mapping."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sync for Commerce",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sync latest commerce data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/{{companyId}}/sync/commerce/latest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Runs a commerce sync from the last successful sync to the specified date."
+        },
+        {
+          "info": {
+            "name": "Get commerce sync configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/config/companies/{{companyId}}/sync/commerce"
+          },
+          "docs": "Returns a company's commerce sync configuration."
+        }
+      ]
+    }
+  ]
+}

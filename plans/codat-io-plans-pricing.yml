@@ -1,0 +1,150 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Codat
+providerId: codat-io
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Business Data
+- Accounting
+- Banking
+- Commerce
+- Fintech
+- Lending
+- Plans
+description: >-
+  Codat does not publish a public self-serve price list. Pricing is sales-quoted
+  and typically structured around the number of connected companies (linked
+  accounts) and the products in use (Lending, Sync for Payables, Sync for
+  Expenses, Sync for Commerce, Bank Feeds, Spend Insights). A free trial /
+  sandbox is available for building and testing against Codat's sandbox
+  integrations before signing a commercial agreement.
+notes: >-
+  Values below are structural placeholders derived from Codat's public
+  positioning, not a published rate card. Confirm current commercial terms with
+  Codat sales during reconciliation.
+sources:
+- https://www.codat.io/pricing/
+- https://docs.codat.io
+- https://www.codat.io/contact/
+plans:
+- id: codat-io-free-trial
+  name: Free Trial / Sandbox
+  type: trial
+  description: >-
+    Free access to build and test against Codat's sandbox integrations and API
+    products before committing to a paid agreement.
+  entries:
+  - label: Sandbox Companies
+    name: sandbox_companies
+    type: usage
+    metric: companies
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (sandbox / non-production)
+    userMultiplied: false
+  elements:
+  - name: Sandbox Integrations
+  - name: Full API Access
+  - name: Webhooks
+- id: codat-io-usage
+  name: Usage (Linked Companies)
+  type: usage
+  description: >-
+    Production pricing is generally metered by the number of linked companies
+    (connected customers) and the enabled products. Contact Codat for a quote.
+  entries:
+  - label: Linked Company
+    name: linked_company
+    type: usage
+    metric: companies
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: sales-quoted per linked company
+    userMultiplied: true
+  - label: Lending Product
+    name: lending
+    type: usage
+    metric: companies
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: sales-quoted
+    userMultiplied: false
+  - label: Sync for Payables
+    name: sync_for_payables
+    type: usage
+    metric: companies
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: sales-quoted
+    userMultiplied: false
+  - label: Sync for Expenses
+    name: sync_for_expenses
+    type: usage
+    metric: companies
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: sales-quoted
+    userMultiplied: false
+  - label: Sync for Commerce
+    name: sync_for_commerce
+    type: usage
+    metric: companies
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: sales-quoted
+    userMultiplied: false
+  - label: Bank Feeds
+    name: bank_feeds
+    type: usage
+    metric: companies
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: sales-quoted
+    userMultiplied: false
+  elements:
+  - name: Accounting API
+  - name: Banking API
+  - name: Commerce API
+  - name: Platform API
+  - name: Webhooks
+- id: codat-io-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Volume commitments, dedicated support, security/compliance reviews, and
+    negotiated terms for larger lenders, fintechs, and B2B software providers.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Pricing
+  - name: Dedicated Support
+  - name: Security and Compliance Review
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

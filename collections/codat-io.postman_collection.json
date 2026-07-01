@@ -1,0 +1,466 @@
+{
+  "info": {
+    "name": "Codat API",
+    "description": {
+      "content": "Representative Codat business data API requests across the Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. Base URL https://api.codat.io. Auth is your API key Base64-encoded in an Authorization Basic header.",
+      "type": "text/plain"
+    },
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiKey}}", "type": "string" },
+      { "key": "password", "value": "", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.codat.io" },
+    { "key": "apiKey", "value": "" },
+    { "key": "companyId", "value": "" },
+    { "key": "connectionId", "value": "" },
+    { "key": "billId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Companies",
+      "item": [
+        {
+          "name": "List companies",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies"]
+            },
+            "description": "Returns a list of your companies with pagination, search, and ordering."
+          }
+        },
+        {
+          "name": "Create company",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Acme Roofing\",\n  \"description\": \"Sandbox company\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/companies",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies"]
+            },
+            "description": "Creates a new company that represents one of your customers."
+          }
+        },
+        {
+          "name": "Get company",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}"]
+            },
+            "description": "Gets a single company by ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Connections",
+      "item": [
+        {
+          "name": "List connections",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections"]
+            },
+            "description": "Lists the data connections for a company."
+          }
+        },
+        {
+          "name": "Create connection",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platformKey\": \"gbol\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections"]
+            },
+            "description": "Creates a connection for the company using a platform key."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Manage data",
+      "item": [
+        {
+          "name": "Refresh all data",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/data/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "data", "all"]
+            },
+            "description": "Queues a refresh of all data types for a company."
+          }
+        },
+        {
+          "name": "Refresh data type",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/data/queue/invoices",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "data", "queue", "invoices"]
+            },
+            "description": "Queues a refresh of a single data type."
+          }
+        },
+        {
+          "name": "Get data status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/dataStatus",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "dataStatus"]
+            },
+            "description": "Returns the sync status for each data type of a company."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accounting",
+      "item": [
+        {
+          "name": "List accounts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/data/accounts",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "data", "accounts"]
+            },
+            "description": "Gets the latest chart of accounts for a company."
+          }
+        },
+        {
+          "name": "List invoices",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/invoices",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "invoices"]
+            },
+            "description": "Lists invoices for a connection."
+          }
+        },
+        {
+          "name": "List bills",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/bills",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "bills"]
+            },
+            "description": "Lists bills for a connection."
+          }
+        },
+        {
+          "name": "List journal entries",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/journalEntries",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "journalEntries"]
+            },
+            "description": "Lists journal entries for a connection."
+          }
+        },
+        {
+          "name": "Get profit and loss",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/financials/profitAndLoss",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "financials", "profitAndLoss"]
+            },
+            "description": "Gets the profit and loss report for a connection."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Banking",
+      "item": [
+        {
+          "name": "List banking accounts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/banking-accounts",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "banking-accounts"]
+            },
+            "description": "Lists standardized banking accounts for a connection."
+          }
+        },
+        {
+          "name": "List banking transactions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/banking-transactions",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "banking-transactions"]
+            },
+            "description": "Lists standardized banking transactions for a connection."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Commerce",
+      "item": [
+        {
+          "name": "List commerce orders",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/commerce-orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "commerce-orders"]
+            },
+            "description": "Lists commerce orders for a connection."
+          }
+        },
+        {
+          "name": "List commerce payments",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/commerce-payments",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "commerce-payments"]
+            },
+            "description": "Lists commerce payments for a connection."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lending",
+      "item": [
+        {
+          "name": "Get enhanced profit and loss accounts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/reports/enhancedProfitAndLoss/accounts",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "reports", "enhancedProfitAndLoss", "accounts"]
+            },
+            "description": "Assess-categorized profit and loss accounts for a company."
+          }
+        },
+        {
+          "name": "Get data integrity status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/data/companies/{{companyId}}/assess/dataTypes/banking-transactions/dataIntegrity/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["data", "companies", "{{companyId}}", "assess", "dataTypes", "banking-transactions", "dataIntegrity", "status"]
+            },
+            "description": "Returns the match status for a data type used in Assess data integrity."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bank Feeds",
+      "item": [
+        {
+          "name": "List bank feed bank accounts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/bankAccounts",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "bankAccounts"]
+            },
+            "description": "Lists bank accounts available to receive a bank feed."
+          }
+        },
+        {
+          "name": "Create bank feed bank accounts",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "[]" },
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/data/bankAccounts",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "data", "bankAccounts"]
+            },
+            "description": "Maps source accounts to target bank accounts in the accounting platform."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payables",
+      "item": [
+        {
+          "name": "Create bill",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/payables/bills",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "payables", "bills"]
+            },
+            "description": "Creates a bill in the connected accounting platform."
+          }
+        },
+        {
+          "name": "Create bill payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/connections/{{connectionId}}/payables/bills/{{billId}}/payment",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "connections", "{{connectionId}}", "payables", "bills", "{{billId}}", "payment"]
+            },
+            "description": "Records a payment against a bill."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Expenses",
+      "item": [
+        {
+          "name": "Create expense transactions",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/sync/expenses/expense-transactions",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "sync", "expenses", "expense-transactions"]
+            },
+            "description": "Creates an expense transaction to be reconciled into accounting software."
+          }
+        },
+        {
+          "name": "Get mapping options",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/sync/expenses/mappingOptions",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "sync", "expenses", "mappingOptions"]
+            },
+            "description": "Gets accounts, tracking categories, and tax rates for expense mapping."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sync for Commerce",
+      "item": [
+        {
+          "name": "Sync latest commerce data",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": {
+              "raw": "{{baseUrl}}/companies/{{companyId}}/sync/commerce/latest",
+              "host": ["{{baseUrl}}"],
+              "path": ["companies", "{{companyId}}", "sync", "commerce", "latest"]
+            },
+            "description": "Runs a commerce sync from the last successful sync to the specified date."
+          }
+        },
+        {
+          "name": "Get commerce sync configuration",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/config/companies/{{companyId}}/sync/commerce",
+              "host": ["{{baseUrl}}"],
+              "path": ["config", "companies", "{{companyId}}", "sync", "commerce"]
+            },
+            "description": "Returns a company's commerce sync configuration."
+          }
+        }
+      ]
+    }
+  ]
+}

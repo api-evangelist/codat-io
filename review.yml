@@ -1,0 +1,88 @@
+aid: codat-io
+name: Codat
+review:
+  question: Does Codat expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-01'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Codat's asynchronous surface is delivered through outbound HTTP webhooks
+    (event consumers registered via the Platform API), not a WebSocket or SSE
+    stream, and not a client-consumable message channel. Under current API
+    Evangelist scope this webhook pattern is documented in the OpenAPI/apis.yml
+    artifacts rather than modeled as an AsyncAPI document. No AsyncAPI file was
+    authored because there is no WebSocket or SSE transport to describe.
+findings:
+  summary: |
+    Codat does not publish a documented public WebSocket API. All product APIs
+    (Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for
+    Payables, Sync for Expenses, Sync for Commerce) are HTTPS REST endpoints
+    served under https://api.codat.io. Data pulls are asynchronous but are
+    surfaced to consumers through outbound HTTP webhook notifications and
+    pull-status polling, not a bidirectional ws:// or wss:// connection. No
+    realtime WebSocket endpoint is documented anywhere in Codat's reference.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.codat.io
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: Outbound HTTP POST event notifications to consumer-registered URLs (e.g. dataset sync complete). One-way server-to-consumer HTTP, not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Codat's API reference or product pages as of the review date.
+  authentication:
+    scheme: Basic (API key)
+    note: >-
+      Codat expects the API key Base64-encoded in the Authorization header using
+      the Basic scheme (Authorization: Basic YOUR_ENCODED_API_KEY). The OpenAPI
+      security scheme is an apiKey header named Authorization.
+  endpointsConfirmedRest:
+    - GET    https://api.codat.io/companies
+    - POST   https://api.codat.io/companies
+    - GET    https://api.codat.io/companies/{companyId}
+    - GET    https://api.codat.io/companies/{companyId}/connections
+    - POST   https://api.codat.io/companies/{companyId}/connections
+    - POST   https://api.codat.io/companies/{companyId}/data/all
+    - POST   https://api.codat.io/companies/{companyId}/data/queue/{dataType}
+    - GET    https://api.codat.io/companies/{companyId}/dataStatus
+    - GET    https://api.codat.io/companies/{companyId}/data/accounts
+    - GET    https://api.codat.io/companies/{companyId}/connections/{connectionId}/data/invoices
+    - GET    https://api.codat.io/companies/{companyId}/connections/{connectionId}/data/bills
+    - GET    https://api.codat.io/companies/{companyId}/connections/{connectionId}/data/banking-transactions
+    - GET    https://api.codat.io/companies/{companyId}/connections/{connectionId}/data/commerce-orders
+    - GET    https://api.codat.io/companies/{companyId}/reports/enhancedProfitAndLoss/accounts
+    - PUT    https://api.codat.io/companies/{companyId}/connections/{connectionId}/data/bankAccounts
+    - POST   https://api.codat.io/companies/{companyId}/connections/{connectionId}/payables/bills
+    - POST   https://api.codat.io/companies/{companyId}/sync/expenses/expense-transactions
+    - POST   https://api.codat.io/companies/{companyId}/sync/commerce/latest
+    - GET    https://api.codat.io/webhooks
+    - GET    https://api.codat.io/integrations
+sources:
+  - url: https://docs.codat.io
+    type: Documentation
+    note: Product hub; all documented transports are HTTPS REST plus outbound webhooks.
+  - url: https://docs.codat.io/platform-api
+    type: APIReference
+    note: Platform API endpoints are HTTPS REST under https://api.codat.io.
+  - url: https://docs.codat.io/using-the-api/authentication
+    type: Documentation
+    note: API key is Base64-encoded in an Authorization Basic header.
+  - url: https://github.com/codatio/oas
+    type: OpenAPI
+    note: Per-product OpenAPI specs; all servers are https://api.codat.io, no WebSocket surface.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Codat's asynchronous behavior is
+    handled via outbound HTTP webhooks and REST pull-status endpoints, both of
+    which are captured in the OpenAPI and apis.yml artifacts. No AsyncAPI
+    document was authored because there is no WebSocket or SSE stream to model.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
