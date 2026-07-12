@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/codat-io-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: authHeader
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Codat expects your API key Base64-encoded and sent in the Authorization header
+    using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'
+  sources:
+  - openapi/codat-io-openapi.yml
