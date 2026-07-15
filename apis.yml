@@ -207,6 +207,8 @@ apis:
     POS platforms into accounting software, with sync configuration, status, and
     supported-integration discovery.
 common:
+- type: AgenticAccess
+  url: agentic-access/codat-io-agentic-access.yml
 - type: DomainSecurity
   url: security/codat-io-domain-security.yml
 - type: Authentication
