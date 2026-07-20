@@ -12,6 +12,6 @@ schemes:
   in: header
   parameter: Authorization
   description: 'Codat expects your API key Base64-encoded and sent in the Authorization header
-    using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'
+    using the Basic scheme, for example: `Authorization: Basic [example key]`.'
   sources:
   - openapi/codat-io-openapi.yml
