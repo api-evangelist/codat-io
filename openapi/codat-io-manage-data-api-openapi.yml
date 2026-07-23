@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting Manage data API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Manage data
+  description: Queue data refreshes and inspect pull history and status.
+paths:
+  /companies/{companyId}/data/all:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    post:
+      operationId: refreshAllData
+      tags:
+      - Manage data
+      summary: Refresh all data
+      description: Queues a refresh of all data types for a company.
+      responses:
+        '204':
+          description: No Content
+  /companies/{companyId}/data/queue/{dataType}:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - name: dataType
+      in: path
+      required: true
+      schema:
+        type: string
+      example: invoices
+    post:
+      operationId: refreshDataType
+      tags:
+      - Manage data
+      summary: Refresh data type
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PullOperation'
+  /companies/{companyId}/dataStatus:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    get:
+      operationId: getDataStatus
+      tags:
+      - Manage data
+      summary: Get data status
+      description: Returns the sync status for each data type of a company.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/DataStatus'
+components:
+  schemas:
+    DataStatus:
+      type: object
+      properties:
+        dataType:
+          type: string
+        status:
+          type: string
+        lastSuccessfulSync:
+          type: string
+          format: date-time
+        currentStatus:
+          type: string
+        latestSyncId:
+          type: string
+    PullOperation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        companyId:
+          type: string
+          format: uuid
+        dataType:
+          type: string
+        status:
+          type: string
+          enum:
+          - Initial
+          - Queued
+          - Fetching
+          - MapQueued
+          - Mapping
+          - Complete
+          - FetchError
+          - MapError
+          - InternalError
+          - PermissionsError
+          - RateLimitError
+          - PrerequisiteNotMet
+          - Cancelled
+        requested:
+          type: string
+          format: date-time
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'

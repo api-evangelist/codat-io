@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting Commerce API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Commerce
+  description: Standardized commerce and point-of-sale data types.
+paths:
+  /companies/{companyId}/connections/{connectionId}/data/commerce-customers:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listCommerceCustomers
+      tags:
+      - Commerce
+      summary: List commerce customers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataList'
+  /companies/{companyId}/connections/{connectionId}/data/commerce-orders:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listCommerceOrders
+      tags:
+      - Commerce
+      summary: List commerce orders
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/commerce-payments:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listCommercePayments
+      tags:
+      - Commerce
+      summary: List commerce payments
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/commerce-products:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listCommerceProducts
+      tags:
+      - Commerce
+      summary: List commerce products
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    DataList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        totalResults:
+          type: integer
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: Unique identifier for a connection.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'

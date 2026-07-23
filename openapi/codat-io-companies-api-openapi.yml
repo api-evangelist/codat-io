@@ -1,0 +1,189 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting Companies API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Companies
+  description: Create and manage the companies (customers) you pull data for.
+paths:
+  /companies:
+    get:
+      operationId: listCompanies
+      tags:
+      - Companies
+      summary: List companies
+      description: Returns a list of your companies with pagination, search, and ordering.
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/pageSize'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/orderBy'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Companies'
+    post:
+      operationId: createCompany
+      tags:
+      - Companies
+      summary: Create company
+      description: Creates a new company that represents one of your customers.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanyRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+  /companies/{companyId}:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    get:
+      operationId: getCompany
+      tags:
+      - Companies
+      summary: Get company
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+    patch:
+      operationId: updateCompany
+      tags:
+      - Companies
+      summary: Update company
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanyRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+    delete:
+      operationId: deleteCompany
+      tags:
+      - Companies
+      summary: Delete company
+      description: Permanently deletes a company, its connections, and cached data.
+      responses:
+        '204':
+          description: No Content
+components:
+  schemas:
+    CompanyRequestBody:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Acme Roofing
+        description:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    Companies:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Company'
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        totalResults:
+          type: integer
+    Company:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        platform:
+          type: string
+        redirect:
+          type: string
+        created:
+          type: string
+          format: date-time
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+  parameters:
+    query:
+      name: query
+      in: query
+      description: Codat query language expression to filter results.
+      schema:
+        type: string
+    orderBy:
+      name: orderBy
+      in: query
+      description: Field to order results by.
+      schema:
+        type: string
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of records per page.
+      schema:
+        type: integer
+        default: 100
+    page:
+      name: page
+      in: query
+      description: Page number (1-indexed).
+      schema:
+        type: integer
+        default: 1
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'

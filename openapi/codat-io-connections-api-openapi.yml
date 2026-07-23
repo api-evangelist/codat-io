@@ -1,0 +1,170 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting Connections API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Connections
+  description: Manage a company's connections to accounting, banking, and commerce platforms.
+paths:
+  /companies/{companyId}/connections:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    get:
+      operationId: listConnections
+      tags:
+      - Connections
+      summary: List connections
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connections'
+    post:
+      operationId: createConnection
+      tags:
+      - Connections
+      summary: Create connection
+      description: Creates a connection for the company by providing a platform key.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                platformKey:
+                  type: string
+                  example: gbol
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+  /companies/{companyId}/connections/{connectionId}:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: getConnection
+      tags:
+      - Connections
+      summary: Get connection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+    delete:
+      operationId: deleteConnection
+      tags:
+      - Connections
+      summary: Delete connection
+      responses:
+        '204':
+          description: No Content
+    patch:
+      operationId: unlinkConnection
+      tags:
+      - Connections
+      summary: Update connection
+      description: Deauthorizes a connection without deleting it.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - Unlinked
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+components:
+  schemas:
+    Connections:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+    Connection:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        integrationId:
+          type: string
+        sourceId:
+          type: string
+        sourceType:
+          type: string
+          enum:
+          - Accounting
+          - Banking
+          - BankFeed
+          - Commerce
+          - Expense
+          - Other
+          - Unknown
+        platformName:
+          type: string
+        linkUrl:
+          type: string
+        status:
+          type: string
+          enum:
+          - PendingAuth
+          - Linked
+          - Unlinked
+          - Deauthorized
+        created:
+          type: string
+          format: date-time
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: Unique identifier for a connection.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'

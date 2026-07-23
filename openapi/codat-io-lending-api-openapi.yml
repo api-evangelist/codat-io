@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting Lending API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Lending
+  description: Assess reports and lending metrics.
+paths:
+  /companies/{companyId}/reports/enhancedBalanceSheet/accounts:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    get:
+      operationId: getEnhancedBalanceSheetAccounts
+      tags:
+      - Lending
+      summary: Get enhanced balance sheet accounts
+      description: Assess-categorized balance sheet accounts for a company.
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/reports/enhancedProfitAndLoss/accounts:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    get:
+      operationId: getEnhancedProfitAndLossAccounts
+      tags:
+      - Lending
+      summary: Get enhanced profit and loss accounts
+      responses:
+        '200':
+          description: OK
+  /data/companies/{companyId}/assess/dataTypes/{dataType}/dataIntegrity/status:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - name: dataType
+      in: path
+      required: true
+      schema:
+        type: string
+      example: banking-transactions
+    get:
+      operationId: getDataIntegrityStatus
+      tags:
+      - Lending
+      summary: Get data integrity status
+      description: Returns the match status for a data type used in Assess data integrity.
+      responses:
+        '200':
+          description: OK
+components:
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'

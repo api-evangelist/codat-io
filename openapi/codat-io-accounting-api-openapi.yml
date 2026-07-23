@@ -1,0 +1,229 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Accounting
+  description: Standardized accounting data types.
+paths:
+  /companies/{companyId}/data/accounts:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/page'
+    - $ref: '#/components/parameters/pageSize'
+    get:
+      operationId: listAccounts
+      tags:
+      - Accounting
+      summary: List accounts
+      description: Gets the latest chart of accounts for a company.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataList'
+  /companies/{companyId}/data/accounts/{accountId}:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getAccount
+      tags:
+      - Accounting
+      summary: Get account
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/invoices:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    - $ref: '#/components/parameters/page'
+    - $ref: '#/components/parameters/pageSize'
+    get:
+      operationId: listInvoices
+      tags:
+      - Accounting
+      summary: List invoices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataList'
+  /companies/{companyId}/connections/{connectionId}/data/invoices/{invoiceId}:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    - name: invoiceId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getInvoice
+      tags:
+      - Accounting
+      summary: Get invoice
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/bills:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    - $ref: '#/components/parameters/page'
+    - $ref: '#/components/parameters/pageSize'
+    get:
+      operationId: listBills
+      tags:
+      - Accounting
+      summary: List bills
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataList'
+  /companies/{companyId}/connections/{connectionId}/data/journalEntries:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listJournalEntries
+      tags:
+      - Accounting
+      summary: List journal entries
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/customers:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listCustomers
+      tags:
+      - Accounting
+      summary: List customers
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/suppliers:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listSuppliers
+      tags:
+      - Accounting
+      summary: List suppliers
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/financials/balanceSheet:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: getBalanceSheet
+      tags:
+      - Accounting
+      summary: Get balance sheet
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/financials/profitAndLoss:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: getProfitAndLoss
+      tags:
+      - Accounting
+      summary: Get profit and loss
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/data/financials/cashFlowStatement:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: getCashFlowStatement
+      tags:
+      - Accounting
+      summary: Get cash flow statement
+      responses:
+        '200':
+          description: OK
+components:
+  parameters:
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: Unique identifier for a connection.
+      schema:
+        type: string
+        format: uuid
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of records per page.
+      schema:
+        type: integer
+        default: 100
+    page:
+      name: page
+      in: query
+      description: Page number (1-indexed).
+      schema:
+        type: integer
+        default: 1
+  schemas:
+    DataList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        totalResults:
+          type: integer
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'

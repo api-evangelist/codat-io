@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting Bank Feeds API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Bank Feeds
+  description: Push transactions into accounting platforms as a bank feed.
+paths:
+  /companies/{companyId}/connections/{connectionId}/data/bankAccounts:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listBankFeedBankAccounts
+      tags:
+      - Bank Feeds
+      summary: List bank feed bank accounts
+      responses:
+        '200':
+          description: OK
+    put:
+      operationId: createBankFeedBankAccounts
+      tags:
+      - Bank Feeds
+      summary: Create bank feed bank accounts
+      description: Maps source accounts to target bank accounts in the accounting platform.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/bankFeedAccounts:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: getBankFeedConfiguration
+      tags:
+      - Bank Feeds
+      summary: Get bank feed configuration
+      responses:
+        '200':
+          description: OK
+components:
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: Unique identifier for a connection.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'

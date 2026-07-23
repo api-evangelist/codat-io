@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting Payables API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Payables
+  description: Sync for Payables - write bills and payments.
+paths:
+  /companies/{companyId}/connections/{connectionId}/payables/bills:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    get:
+      operationId: listPayablesBills
+      tags:
+      - Payables
+      summary: List payable bills
+      responses:
+        '200':
+          description: OK
+    post:
+      operationId: createPayableBill
+      tags:
+      - Payables
+      summary: Create bill
+      description: Creates a bill in the accounting platform for the given company.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/payables/bills/{billId}/payment:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    - name: billId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: createBillPayment
+      tags:
+      - Payables
+      summary: Create bill payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+  /companies/{companyId}/connections/{connectionId}/payables/suppliers:
+    parameters:
+    - $ref: '#/components/parameters/companyId'
+    - $ref: '#/components/parameters/connectionId'
+    post:
+      operationId: createPayableSupplier
+      tags:
+      - Payables
+      summary: Create supplier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+components:
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: Unique identifier for a connection.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'

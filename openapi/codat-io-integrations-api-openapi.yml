@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: Codat Accounting Integrations API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  termsOfService: https://www.codat.io/legal/
+  contact:
+    name: Codat Support
+    url: https://www.codat.io/contact/
+  version: '3.0'
+servers:
+- url: https://api.codat.io
+  description: Codat production
+security:
+- authHeader: []
+tags:
+- name: Integrations
+  description: Discover supported integrations and their branding.
+paths:
+  /integrations:
+    get:
+      operationId: listIntegrations
+      tags:
+      - Integrations
+      summary: List integrations
+      description: Lists the integrations supported by your Codat instance.
+      responses:
+        '200':
+          description: OK
+  /integrations/{platformKey}:
+    parameters:
+    - name: platformKey
+      in: path
+      required: true
+      schema:
+        type: string
+      example: gbol
+    get:
+      operationId: getIntegration
+      tags:
+      - Integrations
+      summary: Get integration
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    authHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Codat expects your API key Base64-encoded and sent in the Authorization header using the Basic scheme, for example: `Authorization: Basic YOUR_BASE64_ENCODED_API_KEY`.'
