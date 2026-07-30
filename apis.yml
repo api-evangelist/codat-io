@@ -8,7 +8,20 @@ description: Codat provides a business data API that connects small-business acc
   NetSuite, FreshBooks, and 30+ other systems - and can write bills, payments, and
   expenses back into them - powering underwriting, reconciliation, payables, and
   spend products.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/codat-io.png
 tags:
 - Business Data
 - Accounting
@@ -21,191 +34,656 @@ created: '2026-07-01'
 modified: '2026-07-01'
 specificationVersion: '0.19'
 apis:
-- aid: codat-io:codat-io-platform-api
-  name: Codat Platform API
-  tags:
-  - Companies
-  - Connections
-  - Webhooks
-  - Integrations
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/platform-api
-  baseURL: https://api.codat.io
-  properties:
-  - url: https://docs.codat.io/platform-api
-    type: Documentation
-  - url: https://docs.codat.io/platform-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  - url: collections/codat-io.postman_collection.json
-    type: PostmanCollection
-  - url: collections/codat-io.opencollection.json
-    type: OpenCollection
-  description: Core control plane for managing companies, data connections, refreshing
-    and tracking pulled datasets, integrations, webhook consumers, API keys, and
-    account settings across every Codat data product.
 - aid: codat-io:codat-io-accounting-api
   name: Codat Accounting API
+  description: Standardized accounting data types.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
   tags:
   - Accounting
-  - Invoices
-  - Bills
-  - Journal Entries
-  - Chart of Accounts
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/accounting-api
-  baseURL: https://api.codat.io
   properties:
-  - url: https://docs.codat.io/accounting-api
-    type: Documentation
-  - url: https://docs.codat.io/accounting-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  description: Standardized read (and, for supported platforms, write) access to
-    accounting data - accounts, chart of accounts, invoices, bills, bill payments,
-    credit notes, customers, suppliers, payments, journal entries, journals, direct
-    costs/incomes, transfers, and financial statement reports (balance sheet, profit
-    and loss, cash flow).
-- aid: codat-io:codat-io-banking-api
-  name: Codat Banking API
-  tags:
-  - Banking
-  - Bank Accounts
-  - Transactions
-  - Balances
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/banking-api
-  baseURL: https://api.codat.io
-  properties:
-  - url: https://docs.codat.io/banking-api
-    type: Documentation
-  - url: https://docs.codat.io/banking-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  description: Standardized banking data pulled from connected bank and accounting
-    platforms - bank accounts, account balances, bank transactions, and transaction
-    categories - for reconciliation and cash-flow analysis.
-- aid: codat-io:codat-io-commerce-api
-  name: Codat Commerce API
-  tags:
-  - Commerce
-  - Orders
-  - Payments
-  - Products
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/commerce-api
-  baseURL: https://api.codat.io
-  properties:
-  - url: https://docs.codat.io/commerce-api
-    type: Documentation
-  - url: https://docs.codat.io/commerce-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  description: Standardized commerce and point-of-sale data from platforms such as
-    Shopify, Square, and Stripe - customers, orders, payments, products, disputes,
-    locations, and company info - for merchant underwriting and revenue analysis.
-- aid: codat-io:codat-io-lending-api
-  name: Codat Lending API
-  tags:
-  - Lending
-  - Assess
-  - Underwriting
-  - Financial Metrics
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/lending-api
-  baseURL: https://api.codat.io
-  properties:
-  - url: https://docs.codat.io/lending-api
-    type: Documentation
-  - url: https://docs.codat.io/lending-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  description: Purpose-built lending product combining standardized financial data
-    with Assess features - enhanced/categorized balance sheet and profit-and-loss
-    reports, financial metrics, accounts receivable/payable, loan summaries, and
-    data-integrity checks - for automated SMB underwriting.
+  - type: OpenAPI
+    url: openapi/codat-io-accounting-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
 - aid: codat-io:codat-io-bank-feeds-api
   name: Codat Bank Feeds API
+  description: Push transactions into accounting platforms as a bank feed.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
   tags:
   - Bank Feeds
-  - Bank Accounts
-  - Reconciliation
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/bank-feeds-api
-  baseURL: https://api.codat.io
   properties:
-  - url: https://docs.codat.io/bank-feeds-api
-    type: Documentation
-  - url: https://docs.codat.io/bank-feeds-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  description: Lets card issuers and neobanks push transaction data as a bank feed
-    into customers' accounting platforms, creating and mapping bank/source accounts
-    so transactions appear ready for reconciliation.
-- aid: codat-io:codat-io-sync-for-payables-api
-  name: Codat Sync for Payables API
+  - type: OpenAPI
+    url: openapi/codat-io-bank-feeds-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-banking-api
+  name: Codat Banking API
+  description: Standardized banking data types.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
   tags:
-  - Payables
-  - Bills
-  - Suppliers
-  - Bill Payments
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/sync-for-payables-api
-  baseURL: https://api.codat.io
+  - Banking
   properties:
-  - url: https://docs.codat.io/sync-for-payables-api
-    type: Documentation
-  - url: https://docs.codat.io/sync-for-payables-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  description: Write bills, suppliers, bill payments, and bank accounts back into a
-    customer's accounting platform, with mapping options - the engine behind
-    accounts-payable and bill-pay automation products.
-- aid: codat-io:codat-io-sync-for-expenses-api
-  name: Codat Sync for Expenses API
-  tags:
-  - Expenses
-  - Spend
-  - Reconciliation
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/sync-for-expenses-api
+  - type: OpenAPI
+    url: openapi/codat-io-banking-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-commerce-api
+  name: Codat Commerce API
+  description: Standardized commerce and point-of-sale data types.
+  humanURL: https://docs.codat.io/platform-api
   baseURL: https://api.codat.io
-  properties:
-  - url: https://docs.codat.io/sync-for-expenses-api
-    type: Documentation
-  - url: https://docs.codat.io/sync-for-expenses-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  description: Reconcile card and expense transactions into a customer's accounting
-    software - create expense, reimbursable, and transfer transactions, run syncs,
-    track sync/transaction status, upload attachments, and fetch mapping options.
-- aid: codat-io:codat-io-sync-for-commerce-api
-  name: Codat Sync for Commerce API
   tags:
   - Commerce
-  - Sync
-  - Reconciliation
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.codat.io/sync-for-commerce-api
-  baseURL: https://api.codat.io
   properties:
-  - url: https://docs.codat.io/sync-for-commerce-api
-    type: Documentation
-  - url: https://docs.codat.io/sync-for-commerce-api
-    type: APIReference
-  - url: openapi/codat-io-openapi.yml
-    type: OpenAPI
-  description: Turnkey product that syncs sales, payments, and fees from commerce and
-    POS platforms into accounting software, with sync configuration, status, and
-    supported-integration discovery.
+  - type: OpenAPI
+    url: openapi/codat-io-commerce-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-companies-api
+  name: Codat Companies API
+  description: Create and manage the companies (customers) you pull data for.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-companies-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-connections-api
+  name: Codat Connections API
+  description: Manage a company's connections to accounting, banking, and commerce platforms.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-connections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-expenses-api
+  name: Codat Expenses API
+  description: Sync for Expenses - reconcile card and expense transactions.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Expenses
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-expenses-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-integrations-api
+  name: Codat Integrations API
+  description: Discover supported integrations and their branding.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-lending-api
+  name: Codat Lending API
+  description: Assess reports and lending metrics.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Lending
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-lending-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-manage-data-api
+  name: Codat Manage data API
+  description: Queue data refreshes and inspect pull history and status.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Manage data
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-manage-data-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-payables-api
+  name: Codat Payables API
+  description: Sync for Payables - write bills and payments.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Payables
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-payables-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-sync-for-commerce-api
+  name: Codat Sync for Commerce API
+  description: Sync commerce sales into accounting software.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Sync for Commerce
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-sync-for-commerce-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
+- aid: codat-io:codat-io-webhooks-api
+  name: Codat Webhooks API
+  description: Manage webhook consumers for event subscriptions.
+  humanURL: https://docs.codat.io/platform-api
+  baseURL: https://api.codat.io
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/codat-io-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.codat.io/platform-api
+  - type: APIReference
+    url: https://docs.codat.io/platform-api
+  - type: PostmanCollection
+    url: collections/codat-io.postman_collection.json
+  - type: OpenCollection
+    url: collections/codat-io.opencollection.json
+  - type: Documentation
+    url: https://docs.codat.io/accounting-api
+  - type: APIReference
+    url: https://docs.codat.io/accounting-api
+  - type: Documentation
+    url: https://docs.codat.io/banking-api
+  - type: APIReference
+    url: https://docs.codat.io/banking-api
+  - type: Documentation
+    url: https://docs.codat.io/commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/commerce-api
+  - type: Documentation
+    url: https://docs.codat.io/lending-api
+  - type: APIReference
+    url: https://docs.codat.io/lending-api
+  - type: Documentation
+    url: https://docs.codat.io/bank-feeds-api
+  - type: APIReference
+    url: https://docs.codat.io/bank-feeds-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-payables-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-expenses-api
+  - type: Documentation
+    url: https://docs.codat.io/sync-for-commerce-api
+  - type: APIReference
+    url: https://docs.codat.io/sync-for-commerce-api
 common:
 - type: AgenticAccess
   url: agentic-access/codat-io-agentic-access.yml
