@@ -1,0 +1,38 @@
+{
+  "provider": "codat-io",
+  "sources": [
+    "codat-io-accounting-api-openapi.yml",
+    "codat-io-bank-feeds-api-openapi.yml",
+    "codat-io-banking-api-openapi.yml",
+    "codat-io-commerce-api-openapi.yml",
+    "codat-io-companies-api-openapi.yml",
+    "codat-io-connections-api-openapi.yml",
+    "codat-io-expenses-api-openapi.yml",
+    "codat-io-integrations-api-openapi.yml",
+    "codat-io-lending-api-openapi.yml",
+    "codat-io-manage-data-api-openapi.yml",
+    "codat-io-payables-api-openapi.yml",
+    "codat-io-sync-for-commerce-api-openapi.yml",
+    "codat-io-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "codat-io-accounting-api-openapi.yml",
+    "codat-io-bank-feeds-api-openapi.yml",
+    "codat-io-banking-api-openapi.yml",
+    "codat-io-commerce-api-openapi.yml",
+    "codat-io-companies-api-openapi.yml",
+    "codat-io-connections-api-openapi.yml",
+    "codat-io-expenses-api-openapi.yml",
+    "codat-io-integrations-api-openapi.yml",
+    "codat-io-lending-api-openapi.yml",
+    "codat-io-manage-data-api-openapi.yml",
+    "codat-io-payables-api-openapi.yml",
+    "codat-io-sync-for-commerce-api-openapi.yml",
+    "codat-io-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
