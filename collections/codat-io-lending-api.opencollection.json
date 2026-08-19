@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codat Accounting Lending API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get enhanced balance sheet accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/:companyId/reports/enhancedBalanceSheet/accounts",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              }
+            ]
+          },
+          "docs": "Assess-categorized balance sheet accounts for a company."
+        },
+        {
+          "info": {
+            "name": "Get enhanced profit and loss accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/:companyId/reports/enhancedProfitAndLoss/accounts",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              }
+            ]
+          },
+          "docs": "Get enhanced profit and loss accounts"
+        },
+        {
+          "info": {
+            "name": "Get data integrity status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/data/companies/:companyId/assess/dataTypes/:dataType/dataIntegrity/status",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              },
+              {
+                "name": "dataType",
+                "value": "banking-transactions",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the match status for a data type used in Assess data integrity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

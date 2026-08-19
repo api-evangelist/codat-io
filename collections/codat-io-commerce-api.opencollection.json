@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codat Accounting Commerce API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commerce",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List commerce customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/:companyId/connections/:connectionId/data/commerce-customers",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a connection."
+              }
+            ]
+          },
+          "docs": "List commerce customers"
+        },
+        {
+          "info": {
+            "name": "List commerce orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/:companyId/connections/:connectionId/data/commerce-orders",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a connection."
+              }
+            ]
+          },
+          "docs": "List commerce orders"
+        },
+        {
+          "info": {
+            "name": "List commerce payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/:companyId/connections/:connectionId/data/commerce-payments",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a connection."
+              }
+            ]
+          },
+          "docs": "List commerce payments"
+        },
+        {
+          "info": {
+            "name": "List commerce products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/:companyId/connections/:connectionId/data/commerce-products",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a connection."
+              }
+            ]
+          },
+          "docs": "List commerce products"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

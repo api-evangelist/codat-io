@@ -1,0 +1,374 @@
+{
+  "item": [
+    {
+      "id": "5939165d-83eb-47d2-9932-decf89004ca9",
+      "name": "Banking",
+      "description": {
+        "content": "Standardized banking data types.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a4fa882-86de-494b-9ade-60e38de6f06c",
+          "name": "List banking accounts",
+          "request": {
+            "name": "List banking accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "companies",
+                ":companyId",
+                "connections",
+                ":connectionId",
+                "data",
+                "banking-accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "companyId",
+                  "description": "(Required) Unique identifier for a company."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connectionId",
+                  "description": "(Required) Unique identifier for a connection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49d52a7e-079a-44bb-a78a-b86323cec897",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "companies",
+                    ":companyId",
+                    "connections",
+                    ":connectionId",
+                    "data",
+                    "banking-accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "companyId",
+                      "description": "(Required) Unique identifier for a company."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connectionId",
+                      "description": "(Required) Unique identifier for a connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageNumber\": 4954,\n  \"pageSize\": 7946,\n  \"totalResults\": 1997\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55fff670-d719-48ed-801d-2d1ec2679eb2",
+          "name": "List banking transactions",
+          "request": {
+            "name": "List banking transactions",
+            "description": {},
+            "url": {
+              "path": [
+                "companies",
+                ":companyId",
+                "connections",
+                ":connectionId",
+                "data",
+                "banking-transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "companyId",
+                  "description": "(Required) Unique identifier for a company."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connectionId",
+                  "description": "(Required) Unique identifier for a connection."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbdcd1a7-598d-4f9e-b5c6-820e0a5b4500",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "companies",
+                    ":companyId",
+                    "connections",
+                    ":connectionId",
+                    "data",
+                    "banking-transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "companyId",
+                      "description": "(Required) Unique identifier for a company."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connectionId",
+                      "description": "(Required) Unique identifier for a connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "241d7f97-6e71-4218-95b3-dfe2144eafe1",
+          "name": "List banking transaction categories",
+          "request": {
+            "name": "List banking transaction categories",
+            "description": {},
+            "url": {
+              "path": [
+                "companies",
+                ":companyId",
+                "connections",
+                ":connectionId",
+                "data",
+                "banking-transactionCategories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "companyId",
+                  "description": "(Required) Unique identifier for a company."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "connectionId",
+                  "description": "(Required) Unique identifier for a connection."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "097c2d4c-8fbf-4c27-8505-2828f20cfb78",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "companies",
+                    ":companyId",
+                    "connections",
+                    ":connectionId",
+                    "data",
+                    "banking-transactionCategories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "companyId",
+                      "description": "(Required) Unique identifier for a company."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "connectionId",
+                      "description": "(Required) Unique identifier for a connection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.codat.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a1cb639-0b86-44f7-ba05-8523674f4fa4",
+    "name": "Codat Accounting Banking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.\n\nContact Support:\n Name: Codat Support",
+      "type": "text/plain"
+    }
+  }
+}

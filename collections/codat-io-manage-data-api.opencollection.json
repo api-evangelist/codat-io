@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codat Accounting Manage data API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manage data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Refresh all data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/:companyId/data/all",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              }
+            ]
+          },
+          "docs": "Queues a refresh of all data types for a company."
+        },
+        {
+          "info": {
+            "name": "Refresh data type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.codat.io/companies/:companyId/data/queue/:dataType",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              },
+              {
+                "name": "dataType",
+                "value": "invoices",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refresh data type"
+        },
+        {
+          "info": {
+            "name": "Get data status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/companies/:companyId/dataStatus",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for a company."
+              }
+            ]
+          },
+          "docs": "Returns the sync status for each data type of a company."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

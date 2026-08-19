@@ -1,0 +1,200 @@
+{
+  "item": [
+    {
+      "id": "2e120cd6-4fe9-4564-a000-85f3ae30adb4",
+      "name": "Integrations",
+      "description": {
+        "content": "Discover supported integrations and their branding.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c826eef6-2808-4e93-b4ea-6434f37175d4",
+          "name": "List integrations",
+          "request": {
+            "name": "List integrations",
+            "description": {
+              "content": "Lists the integrations supported by your Codat instance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02930671-17c1-4685-90ac-9367757be762",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5906b32-2912-4e26-a604-d818927b13c2",
+          "name": "Get integration",
+          "request": {
+            "name": "Get integration",
+            "description": {},
+            "url": {
+              "path": [
+                "integrations",
+                ":platformKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platformKey",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a526c192-7f70-47d1-828a-bef1a16908b8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations",
+                    ":platformKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platformKey",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.codat.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "97577cca-893e-4bc9-a296-6978e3dd2fdc",
+    "name": "Codat Accounting Integrations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.\n\nContact Support:\n Name: Codat Support",
+      "type": "text/plain"
+    }
+  }
+}

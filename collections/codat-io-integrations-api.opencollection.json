@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Codat Accounting Integrations API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/integrations"
+          },
+          "docs": "Lists the integrations supported by your Codat instance."
+        },
+        {
+          "info": {
+            "name": "Get integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.codat.io/integrations/:platformKey",
+            "params": [
+              {
+                "name": "platformKey",
+                "value": "gbol",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get integration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
