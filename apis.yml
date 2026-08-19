@@ -32,7 +32,7 @@ tags:
 - Financial Data
 created: '2026-07-01'
 modified: '2026-07-01'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: codat-io:codat-io-accounting-api
   name: Codat Accounting API
