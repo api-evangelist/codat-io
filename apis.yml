@@ -390,6 +390,8 @@ apis:
   humanURL: https://docs.codat.io/platform-api
   baseURL: https://api.codat.io
   tags:
+  - Integration
+  tags_raw:
   - Integrations
   properties:
   - type: OpenAPI
@@ -640,6 +642,8 @@ apis:
   humanURL: https://docs.codat.io/platform-api
   baseURL: https://api.codat.io
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
