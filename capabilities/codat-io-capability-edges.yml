@@ -1,0 +1,46 @@
+slug: codat-io
+provider: Codat
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Payables
+  spec_file: codat-io-payables-api-openapi.yml
+  capability_id: BC-200.20
+  capability_id_l1: BC-200
+  capability_name: Accounts Payable Management
+  confidence: 0.9
+  evidence: POST /companies/{companyId}/connections/{connectionId}/payables/bills/{billId}/payment createBillPayment
+    Create bill payment
+  reason: Operations create and list supplier bills, record bill payments and create suppliers in the
+    accounting system — squarely Accounts Payable Management (invoice processing, payments, vendor accounting).
+- tag: Accounting
+  spec_file: codat-io-accounting-api-openapi.yml
+  capability_id: BC-200
+  capability_id_l1: BC-200
+  capability_name: Financial Management
+  confidence: 0.8
+  evidence: '"List journal entries", "List bills", "List invoices", "Get balance sheet", "Get profit and
+    loss", "Get cash flow statement"'
+  reason: Operations expose ledger accounts, journals, payables (bills), receivables (invoices) and statutory
+    financial statements from connected accounting systems — squarely accounting/financial management.
+    Spans GL, AP, AR and reporting, so no single L2 is asserted.
+- tag: Webhooks
+  spec_file: codat-io-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.75
+  evidence: POST /webhooks createWebhookConsumer Create webhook consumer
+  reason: Creating and listing webhook consumers is management of outbound event subscriptions exposed
+    to API consumers, matching Webhook & Event Subscription Management. Only two operations, so moderate
+    confidence.

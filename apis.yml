@@ -701,6 +701,9 @@ apis:
   - type: APIReference
     url: https://docs.codat.io/sync-for-commerce-api
 common:
+- type: CapabilityMap
+  url: capabilities/codat-io-capability-edges.yml
+  name: Codat Business Capability Map
 - type: AgenticAccess
   url: agentic-access/codat-io-agentic-access.yml
 - type: DomainSecurity
