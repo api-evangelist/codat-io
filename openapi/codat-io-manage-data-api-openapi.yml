@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Codat Accounting Manage data API
-  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  title: Codat Manage data API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms.
   termsOfService: https://www.codat.io/legal/
   contact:
     name: Codat Support
@@ -13,7 +13,7 @@ servers:
 security:
 - authHeader: []
 tags:
-- name: Manage data
+- name: Manage Data
   description: Queue data refreshes and inspect pull history and status.
 paths:
   /companies/{companyId}/data/all:
@@ -22,7 +22,7 @@ paths:
     post:
       operationId: refreshAllData
       tags:
-      - Manage data
+      - Manage Data
       summary: Refresh all data
       description: Queues a refresh of all data types for a company.
       responses:
@@ -40,7 +40,7 @@ paths:
     post:
       operationId: refreshDataType
       tags:
-      - Manage data
+      - Manage Data
       summary: Refresh data type
       responses:
         '200':
@@ -55,7 +55,7 @@ paths:
     get:
       operationId: getDataStatus
       tags:
-      - Manage data
+      - Manage Data
       summary: Get data status
       description: Returns the sync status for each data type of a company.
       responses:
@@ -68,21 +68,16 @@ paths:
                 additionalProperties:
                   $ref: '#/components/schemas/DataStatus'
 components:
+  parameters:
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier for a company.
+      schema:
+        type: string
+        format: uuid
   schemas:
-    DataStatus:
-      type: object
-      properties:
-        dataType:
-          type: string
-        status:
-          type: string
-        lastSuccessfulSync:
-          type: string
-          format: date-time
-        currentStatus:
-          type: string
-        latestSyncId:
-          type: string
     PullOperation:
       type: object
       properties:
@@ -113,15 +108,20 @@ components:
         requested:
           type: string
           format: date-time
-  parameters:
-    companyId:
-      name: companyId
-      in: path
-      required: true
-      description: Unique identifier for a company.
-      schema:
-        type: string
-        format: uuid
+    DataStatus:
+      type: object
+      properties:
+        dataType:
+          type: string
+        status:
+          type: string
+        lastSuccessfulSync:
+          type: string
+          format: date-time
+        currentStatus:
+          type: string
+        latestSyncId:
+          type: string
   securitySchemes:
     authHeader:
       type: apiKey

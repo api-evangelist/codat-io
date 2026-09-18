@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Codat Accounting Commerce API
-  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms. This document consolidates representative endpoints from Codat's Platform, Accounting, Banking, Commerce, Lending, Bank Feeds, Sync for Payables, Sync for Expenses, and Sync for Commerce products. See docs.codat.io and github.com/codatio/oas for the authoritative per-product specifications.
+  title: Codat Commerce API
+  description: Codat's business data API standardizes small-business accounting, banking, and commerce data behind a single integration at api.codat.io, and can write bills, payments, and expenses back into connected platforms.
   termsOfService: https://www.codat.io/legal/
   contact:
     name: Codat Support
@@ -69,20 +69,6 @@ paths:
         '200':
           description: OK
 components:
-  schemas:
-    DataList:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            type: object
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-        totalResults:
-          type: integer
   parameters:
     companyId:
       name: companyId
@@ -100,6 +86,20 @@ components:
       schema:
         type: string
         format: uuid
+  schemas:
+    DataList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+        totalResults:
+          type: integer
   securitySchemes:
     authHeader:
       type: apiKey

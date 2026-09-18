@@ -1,19 +1,7 @@
 {
   "provider": "codat-io",
   "sources": [
-    "codat-io-accounting-api-openapi.yml",
-    "codat-io-bank-feeds-api-openapi.yml",
-    "codat-io-banking-api-openapi.yml",
-    "codat-io-commerce-api-openapi.yml",
-    "codat-io-companies-api-openapi.yml",
-    "codat-io-connections-api-openapi.yml",
-    "codat-io-expenses-api-openapi.yml",
-    "codat-io-integrations-api-openapi.yml",
-    "codat-io-lending-api-openapi.yml",
-    "codat-io-manage-data-api-openapi.yml",
-    "codat-io-payables-api-openapi.yml",
-    "codat-io-sync-for-commerce-api-openapi.yml",
-    "codat-io-webhooks-api-openapi.yml"
+    "_original/codat-io-openapi.yml"
   ],
   "outputs": [
     "codat-io-accounting-api-openapi.yml",
@@ -33,6 +21,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "codat-io-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "codat-io-accounting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-bank-feeds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-banking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-commerce-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-companies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-expenses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-integrations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-lending-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-manage-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-payables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-sync-for-commerce-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "codat-io-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
